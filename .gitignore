@@ -2,3 +2,5 @@
 *.out
 makefile_help/test
 threads/class_in_thread/test
+threads/simpleMutex/withoutMutex
+threads/simpleMutex/simpleMutex
