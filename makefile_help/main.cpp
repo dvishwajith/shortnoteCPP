@@ -12,14 +12,6 @@ public:
 };
 
 
-int aclassInstance(){
-    aClass obj;
-    int a,b,c;
-    a=1,b=2,c=5;
-    obj.add(a,b,&c);
-    return c;
-    
-}
 
 void * aclassInstancevoid(void *){
     aClass obj;
@@ -27,14 +19,10 @@ void * aclassInstancevoid(void *){
     a=1,b=10,c=5;
     obj.add(a,b,&c);
     printf ("test aclassInstancevoid %d\n",c);
-    return NULL;
     
 }
 
-void * aclassInstancePrint(void *){
-    printf ("test %d\n",aclassInstance());
-    return NULL;
-}
+
 
 int main (){
 
@@ -42,7 +30,7 @@ int main (){
     pthread_t thread;
 
     /* create a second thread which executes inc_x(&x) */
-    if(pthread_create(&thread, NULL, aclassInstancePrint, NULL)) {
+    if(pthread_create(&thread, NULL, aclassInstancevoid, NULL)) {
 
     fprintf(stderr, "Error creating thread\n");
     return 1;
