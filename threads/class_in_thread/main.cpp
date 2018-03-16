@@ -5,13 +5,10 @@
 
 class aClass {
 public:
-    int a,b,c;
     void add(int a,int b, int *c){
         *c = a+b;
     }
 };
-
-
 
 void * aclassInstancevoid(void *){
     aClass obj;
@@ -21,8 +18,6 @@ void * aclassInstancevoid(void *){
     printf ("test aclassInstancevoid %d\n",c);
     
 }
-
-
 
 int main (){
 
@@ -36,10 +31,7 @@ int main (){
     return 1;
 
     }
-    /* increment y to 100 in the first thread */
-
-
-
+   
     /* wait for the second thread to finish */
     if(pthread_join(thread, NULL)) {
 
@@ -58,10 +50,7 @@ int main (){
     return 1;
 
     }
-    /* increment y to 100 in the first thread */
-
-
-
+    
     /* wait for the second thread to finish */
     if(pthread_join(thread2, NULL)) {
 
