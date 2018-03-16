@@ -1,2 +1,4 @@
 *.o
 *.out
+makefile_help/test
+threads/class_in_thread/test
