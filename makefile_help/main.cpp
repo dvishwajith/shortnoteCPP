@@ -27,11 +27,13 @@ void * aclassInstancevoid(void *){
     a=1,b=10,c=5;
     obj.add(a,b,&c);
     printf ("test aclassInstancevoid %d\n",c);
+    return NULL;
     
 }
 
 void * aclassInstancePrint(void *){
     printf ("test %d\n",aclassInstance());
+    return NULL;
 }
 
 int main (){

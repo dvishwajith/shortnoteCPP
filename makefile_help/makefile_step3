@@ -1,0 +1,32 @@
+##############################################################################
+# Compiler specifications
+# These match the variable names given in /usr/share/lib/make/make.rules
+# so that make's generic rules work to compile our files.
+# gmake prefers CXX and CXXFLAGS for c++ programs
+##############################################################################
+# Which compiler should be used
+
+CXX = g++
+CC = $(CXX)
+
+
+
+# -Wall This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid
+DEBUG_LEVEL		= -g 
+EXTRA_CCFLAGS	= -Wall
+CXXFLAGS 		= $(DEBUG_LEVEL) $(EXTRA_CCFLAGS)
+CCFLAGS         = $(CXXFLAGS) 
+
+all: main
+
+# g++ -o <file> Place the output into <file>
+main: main.o
+	$(CC)  -o  test  -pthread main.o   
+
+ # g++ -c <file> Compile and assemble, but do not link 
+main.o:main.cpp
+	$(CC) $(CCFLAGS) -c main.cpp  
+
+clean:
+	rm -rf *.o
+	rm -rf test
