@@ -6,3 +6,4 @@ threads/simpleMutex/withoutMutex
 threads/simpleMutex/simpleMutex
 threads/threadwithinput/test
 threads/threadwithinput/threadWithInput
+auto/auto
