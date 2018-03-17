@@ -35,7 +35,7 @@ int main(){
         cout << "After changing , you can see it is not changed  vect out " << i << endl ;
     }
 
-    // use this if you want to change vecto veriables
+    // use this if you want to change vecto veriables "auto &i"
     for(auto &i : vect ){
         i = i+50;
         cout << "Try  adding 50 to vector vaule using 'auto &i' vect out " << i << endl ;
