@@ -9,3 +9,5 @@ threads/threadwithinput/threadWithInput
 auto/auto
 stl/iterator/iterator
 threads/semaphore/semaphore
+ipc/named_pipes/named_pipe_writer
+ipc/named_pipes/named_pipe_reader
