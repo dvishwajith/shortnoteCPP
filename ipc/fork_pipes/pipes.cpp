@@ -34,7 +34,7 @@ int main(int argc, char const *argv[]) {
   //child process
   if (childpid == 0){ // child process because return value zero
     close(fd[0]);
-    printf("Sending from process %d string: %s\n", childpid, string2 );
+    printf("Writing to fd[1] from process %d string: %s\n", childpid, string2 );
     write(fd[1],string2 ,strlen(string2)+1);
 
     exit(0);
@@ -46,7 +46,7 @@ int main(int argc, char const *argv[]) {
 
     read(fd[0],readbuffer,sizeof(readbuffer));
 
-    printf("Recieved from process %d string: %s\n", childpid, readbuffer );
+    printf("Reading from fd[0] from process %d string: %s\n", childpid, readbuffer );
   }
 
   return 0;
