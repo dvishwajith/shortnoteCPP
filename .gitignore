@@ -11,3 +11,6 @@ stl/iterator/iterator
 threads/semaphore/semaphore
 ipc/named_pipes/named_pipe_writer
 ipc/named_pipes/named_pipe_reader
+ipc/fork_pipes/pipes
+oop/copyconstruct/deepcopy
+oop/copyconstruct/shallowcopy
