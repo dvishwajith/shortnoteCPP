@@ -15,3 +15,4 @@ ipc/fork_pipes/pipes
 oop/copyconstruct/deepcopy
 oop/copyconstruct/shallowcopy
 oop/initializerList/initializerList
+oop/friend/friend
