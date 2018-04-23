@@ -20,6 +20,7 @@ public:
 
 void show(A& a){
     cout << "A::x :" << a.x << endl;
+    a.x = 10;
 }
 
 
@@ -27,6 +28,7 @@ void show(A& a){
  
 int main() {
     A a;
+    show(a);
     show(a);
     return 0;
 }
