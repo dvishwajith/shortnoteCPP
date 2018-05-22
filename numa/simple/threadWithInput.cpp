@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <numa.h>
 
+// NUMA example , Numa node example
 
 #define THREAD_NUMBER 100
 
