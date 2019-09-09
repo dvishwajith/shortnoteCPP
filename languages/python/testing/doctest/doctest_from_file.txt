@@ -1,0 +1,15 @@
+The ``example`` module
+======================
+
+Using ``factorial``
+-------------------
+
+This is an example text file in reStructuredText format.  First import
+``factorial`` from the ``doctest_`` module:
+
+    >>> from doctest_from_file import factorial
+
+Now use it:
+
+    >>> factorial(5)
+    120
