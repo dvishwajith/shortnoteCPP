@@ -45,4 +45,13 @@ int main(){
     for(auto i : vect ){
         cout << "It is changed  vect out " << i << endl ;
     }    
+    
+    for(auto i=vect.begin(); i != vect.end() ; i++ ){
+        *i = *i + 100;
+        cout << "Try addin 100 with pointer  vect out " << *i << endl ;
+    }  
+    
+    for(auto i : vect ){
+        cout << "It is changed  vect out " << i << endl ;
+    }  
 }
