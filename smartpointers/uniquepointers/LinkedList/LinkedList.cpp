@@ -55,18 +55,26 @@ void LinkedList::removeItem(int obj)
     auto temp_node = m_head.get();
     while(temp_node != nullptr)
     {
-        if(temp_node->data == obj)
-        {
+        /**
+         * This part will looks like normal LinkedList with plain raw pointers.
+         * LinkedLisst with unique pointers cannot be implemented without using raw pinters. Which violate the principal.
+         * 
+         */
+
+        // if(temp_node->data == obj)
+        // {
             
-        }
-        std::cout << temp_node->data << std::endl;
-        temp_node = temp_node->m_next.get();
+        // }
+        // std::cout << temp_node->data << std::endl;
+        // temp_node = temp_node->m_next.get();
     }
 
     auto node = std::make_unique<Node>(obj);
     node->m_next = std::move(m_head);
     m_head = std::move(node);
 }
+
+
 
 void LinkedList::printall()
 {
