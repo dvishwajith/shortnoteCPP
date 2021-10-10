@@ -53,7 +53,7 @@ void LinkedList::addItem(int obj)
 void LinkedList::removeItem(int obj)
 {
     auto temp_node = m_head.get();
-    while(temp_node != nullptr)
+    while(temp_node->m_next != nullptr)
     {
         /**
          * This part will looks like normal LinkedList with plain raw pointers.
@@ -61,17 +61,17 @@ void LinkedList::removeItem(int obj)
          * 
          */
 
-        // if(temp_node->data == obj)
-        // {
+        if(temp_node->m_next->data == obj)
+        {
             
-        // }
+        }
         // std::cout << temp_node->data << std::endl;
         // temp_node = temp_node->m_next.get();
     }
 
-    auto node = std::make_unique<Node>(obj);
-    node->m_next = std::move(m_head);
-    m_head = std::move(node);
+    // auto node = std::make_unique<Node>(obj);
+    // node->m_next = std::move(m_head);
+    // m_head = std::move(node);
 }
 
 
@@ -81,11 +81,11 @@ void LinkedList::printall()
     /**
      * if we declared m_head as a shared pointer, then we will not have to use raw pointers here
      */
-    auto& temp_node = m_head; 
+    auto temp_node = m_head.get(); 
     while(temp_node != nullptr)
     {
         std::cout << temp_node->data << std::endl;
-        temp_node = (temp_node->m_next);
+        temp_node = temp_node->m_next.get();
     }
 }
 
