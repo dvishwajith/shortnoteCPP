@@ -12,6 +12,14 @@ void printVector(std::vector<int> &v)
 
 int main()
 {
+
+    /**
+                [ capture clause ] (parameters) -> return-type  
+                {   
+                definition of method   
+                } 
+     * 
+     */    
     std::vector<int> v {1,2,3,4,5,6,7,8,9};
 
     printVector(v);
@@ -20,10 +28,15 @@ int main()
     // find_if searches for an element for which
     // function(third argument) returns true
 
-    auto iter_g4 = std::find_if(v.begin(), v.end(), [](int i)
+    auto iter_g4 = std::find_if(v.begin(), v.end(), [](int i) -> bool
     {
         return i > 4;
     });
+    /**
+     *  If a lambda has one statement and that statement is a return statement (and it returns an expression), 
+     * the compiler can deduce the return type from the type of that one returned expression.
+     * 
+     */
 
     std::cout << "First number greater that 4 is " <<  *iter_g4 << std::endl;
 
