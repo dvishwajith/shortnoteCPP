@@ -1,3 +1,16 @@
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all makefiles
+!makefile*
+!Makefile*
+!MAKEFILE*
+
+#ignore
+
 *.o
 *.out
 makefile_help/test
