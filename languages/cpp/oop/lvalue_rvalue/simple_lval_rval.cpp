@@ -35,6 +35,20 @@ void foo(int &a)
 //     cout << "value function paramter input called with parameter value " << a << endl;
 // }
 
+
+/*
+If we dedeind a template type for foo, then we will not have to create two functions like  this
+void foo(int &&a)
+void foo(int &a)
+for example
+*/
+template <typename T>
+void modifiedfoo(T&& t)
+{
+    t = __LINE__;
+    cout << __FUNCTION__ << endl;
+}
+
 int main() {
 
     int i, j, *p;
@@ -69,6 +83,36 @@ int main() {
     d = 9;
     d = j;
     cout << "d " << d << endl;
+
+
+    int m =  __LINE__;
+    modifiedfoo(m);             // modifiedfoo<int&>(int& &&) -> modifiedfoo<int&>(int&)
+    cout << "m " << m << endl;
+
+    modifiedfoo(500);
+    cout << "m " << m << endl;  // modifiedfoo<int&&>(int&& &&) -> modifiedfoo<int&&>(int&&)
+   /**
+    * No need to define two foo functions , if we use template functions
+    * 
+    * This is how template deduce types
+      
+            TR   R
+      
+            T&   &  -> T&  // lvalue reference to cv TR -> lvalue reference to T
+            T&   && -> T&  // rvalue reference to cv TR -> TR (lvalue reference to T)
+            T&&  &  -> T&  // lvalue reference to cv TR -> lvalue reference to T
+            T&&  && -> T&& // rvalue reference to cv TR -> TR (rvalue reference to T)
+
+            template <typename T>
+            void modifiedfoo(T&& t)
+            above will tranfor following to
+
+            modifiedfoo(m);     modifiedfoo<int&>(int& &&) -> modifiedfoo<int&>(int&)
+            modifiedfoo(500);   modifiedfoo<int&&>(int&& &&) -> modifiedfoo<int&&>(int&&)
+    * 
+    */
+
+
 
     // correcr usage: deferenced pointer is and lvalue  (althogh there is a segfault here/ but no compile errors)
     *p = i;
