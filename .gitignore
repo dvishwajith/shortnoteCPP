@@ -1,10 +1,3 @@
-# Ignore all
-*
-
-# Unignore all with extensions
-!*.*
-
-# Unignore all makefiles
 !makefile*
 !Makefile*
 !MAKEFILE*
@@ -13,6 +6,8 @@
 
 *.o
 *.out
+*.gch
+*.pyc
 makefile_help/test
 threads/class_in_thread/test
 threads/simpleMutex/withoutMutex
@@ -34,3 +29,4 @@ oop/inheritance/inheritance
 oop/virtualfunc/virtualfunc
 openmp/helloworld/helloworld
 openmp/forloop/forloop
+**/bin/*
