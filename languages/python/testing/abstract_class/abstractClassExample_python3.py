@@ -20,3 +20,6 @@ class derivedClass(AbstractClassExample):
 
 x = derivedClass(10)
 print (x.do_something())
+
+y = AbstractClassExample(10)
+print (y.do_something())
