@@ -8,12 +8,12 @@ private:
 public:
     int data;
     std::shared_ptr<Node> m_next;
-    std::weak_ptr<Node> m_prev;
+    std::shared_ptr<Node> m_prev;
     Node(int obj);
     ~Node();
 };
 
-Node::Node(int obj) : m_next(nullptr), m_prev()
+Node::Node(int obj) : m_next(nullptr), m_prev(nullptr)
 {
     data = obj;
 }
@@ -30,7 +30,7 @@ private:
     /* data */
 public:
     std::shared_ptr<Node> m_head;
-    std::weak_ptr<Node> m_tail;
+    std::shared_ptr<Node> m_tail;
     DoubleLinkedList(/* args */);
     ~DoubleLinkedList();
     void addItem(int obj);
@@ -38,7 +38,7 @@ public:
     void printall();
 };
 
-DoubleLinkedList::DoubleLinkedList(/* args */) : m_head(nullptr), m_tail()
+DoubleLinkedList::DoubleLinkedList(/* args */) : m_head(nullptr), m_tail(nullptr)
 {
 }
 
@@ -58,7 +58,7 @@ void DoubleLinkedList::addItem(int obj)
     node->m_next = std::move(m_head);
     m_head = std::move(node);
 
-    if(m_tail.lock() == nullptr)
+    if(m_tail == nullptr)
     {
         m_tail = node;
     }
@@ -89,7 +89,7 @@ void DoubleLinkedList::removeItem(int obj)
     {
         if(temp_node->data == obj)
         {
-            if(auto prev_node = temp_node->m_prev.lock())
+            if(auto prev_node = temp_node->m_prev)
             {
                 prev_node->m_next = std::move(temp_node->m_next);
                 if(temp_node->m_next)

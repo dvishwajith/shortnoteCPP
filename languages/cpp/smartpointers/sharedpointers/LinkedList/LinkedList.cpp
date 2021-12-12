@@ -1,6 +1,13 @@
 #include <iostream>
 #include <memory>
 
+
+// template<typename T, typename ...Arg>
+// std::unique_ptr<T> make_unique(Arg&& ...arg)
+// {
+//     return std::unique_ptr<T>( new T(std::forward<Arg>(arg)...));
+// }
+
 class Node
 {
 private:
@@ -19,6 +26,7 @@ Node::Node(int obj) : m_next(nullptr)
 
 Node::~Node()
 {
+    std::cout << " Destructor called " << __FUNCTION__  << ":" << __LINE__<< std::endl;
 }
 
 
@@ -41,6 +49,7 @@ LinkedList::LinkedList(/* args */) : m_head(nullptr)
 
 LinkedList::~LinkedList()
 {
+    std::cout << " Destructor called " << __FUNCTION__  << ":" << __LINE__<< std::endl;
 }
 
 void LinkedList::addItem(int obj)
@@ -87,7 +96,7 @@ void LinkedList::removeItem(int obj)
 
 int main()
 {
-    auto linkedlist  = std::make_unique<LinkedList>();
+    auto linkedlist  =  std::unique_ptr<LinkedList>(new LinkedList());
     linkedlist->addItem(1);
     linkedlist->addItem(2);
     linkedlist->addItem(3);

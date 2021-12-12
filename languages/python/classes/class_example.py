@@ -18,55 +18,55 @@ class Employee:
     def __del__(self):
         print("%s is about to be destroyed" % self.__class__.__name__)
 
+if __name__ == "__main__":
+    emp1 = Employee("Syler", 1000)
+    emp2 = Employee("Sachin", 200)
+    emp1.displauEmplyee()
+    emp2.displauEmplyee()
 
-emp1 = Employee("Syler", 1000)
-emp2 = Employee("Sachin", 200)
-emp1.displauEmplyee()
-emp2.displauEmplyee()
-
-print("Total employees are ", emp2.employee_count)
-print("2nd method Total employees are ", Employee.employee_count)
-
-
-print("""
-# setiing . checking deleting attributes
-""")
+    print("Total employees are ", emp2.employee_count)
+    print("2nd method Total employees are ", Employee.employee_count)
 
 
-emp1.age = 7
-print(" hasattr(emp1, 'age') ", hasattr(emp1, 'age'))
-print(" hasattr(emp2, 'age') ", hasattr(emp2, 'age'))
+    print("""
+    # setiing . checking deleting attributes
+    """)
 
-print(" getattr(emp1, 'age') ", getattr(emp1, 'age'))
-print(" setattr(emp2, 'age', 8) ", setattr(emp2, 'age', 8))
-print(" delattr(emp1, 'age') ", delattr(emp1, 'age'))
 
-print("""
-# Built in functions
-""")
+    emp1.age = 7
+    print(" hasattr(emp1, 'age') ", hasattr(emp1, 'age'))
+    print(" hasattr(emp2, 'age') ", hasattr(emp2, 'age'))
 
-print("Employee.__doc__:", Employee.__doc__)
-print("Employee.__name__:", Employee.__name__)
-print("Employee.__module__:", Employee.__module__)
-print("Employee.__bases__:", Employee.__bases__)
-print("Employee.__dict__:", Employee.__dict__)
+    print(" getattr(emp1, 'age') ", getattr(emp1, 'age'))
+    print(" setattr(emp2, 'age', 8) ", setattr(emp2, 'age', 8))
+    print(" delattr(emp1, 'age') ", delattr(emp1, 'age'))
 
-del emp1
-print("deleted emp1. Just before that __del__(this) functio will be called automatically")
+    print("""
+    # Built in functions
+    """)
 
-################ Grabage Collection ############################
+    print("Employee.__doc__:", Employee.__doc__)
+    print("Employee.__name__:", Employee.__name__)
+    print("Employee.__module__:", Employee.__module__)
+    print("Employee.__bases__:", Employee.__bases__)
+    print("Employee.__dict__:", Employee.__dict__)
 
-#       a = 40      # Create object <40>
-#       b = a       # Increase ref. count  of <40> 
-#       c = [b]     # Increase ref. count  of <40> 
-#       
-#       del a       # Decrease ref. count  of <40>
-#       b = 100     # Decrease ref. count  of <40> 
-#       c[0] = -1   # Decrease ref. count  of <40> 
+    del emp1
+    print("deleted emp1. Just before that __del__(this) functio will be called automatically")
 
-print("""
-# Inheritance
-""")
+    ################ Grabage Collection ############################
+
+    #       a = 40      # Create object <40>
+    #       b = a       # Increase ref. count  of <40> 
+    #       c = [b]     # Increase ref. count  of <40> 
+    #       
+    #       del a       # Decrease ref. count  of <40>
+    #       b = 100     # Decrease ref. count  of <40> 
+    #       c[0] = -1   # Decrease ref. count  of <40> 
+
+    print("""
+    # Inheritance
+    """)
 
 
 class Parent:        # define parent class
@@ -90,17 +90,19 @@ class Child(Parent): # define child class
    def childMethod(self):
       print('Calling child method')
 
-c = Child()          # instance of child
-c.childMethod()      # child calls its method
-c.parentMethod()     # calls parent's method
-c.setAttr(200)       # again call parent's method
-c.getAttr()          # again call parent's method
+
+if __name__ == "__main__":
+    c = Child()          # instance of child
+    c.childMethod()      # child calls its method
+    c.parentMethod()     # calls parent's method
+    c.setAttr(200)       # again call parent's method
+    c.getAttr()          # again call parent's method
 
 
-print("""
-# You can see that __init__() does not call super class contructor automatically
-You have to call it by your self
-""")
+    print("""
+    # You can see that __init__() does not call super class contructor automatically
+    You have to call it by your self
+    """)
 
 
 class Parent2():
@@ -129,19 +131,18 @@ class Child2(Parent2):
     
     def childMethod(self):
         print("Calling ChildMethod")
-        
-
-c = Child2()          # instance of child
-c.childMethod()      # child calls its method
-c.parentMethod()     # calls parent's method
-c.setAttr(200)       # again call parent's method
-c.getAttr()          # again call parent's method
 
 
+if __name__ == "__main__":
+    c = Child2()          # instance of child
+    c.childMethod()      # child calls its method
+    c.parentMethod()     # calls parent's method
+    c.setAttr(200)       # again call parent's method
+    c.getAttr()          # again call parent's method
 
-print("""
-# Operator overloading
-""")
+    print("""
+    # Operator overloading
+    """)
 
 class Vector():
     '2d vecotr'
@@ -156,15 +157,16 @@ class Vector():
         return str(self.x) + "," + str(self.y)
 
 
-a = Vector(4, 5)
-b = Vector(2, 3)
-c = a + b
-print("c = a + b -> c ", c)
+if __name__ == "__main__":
+    a = Vector(4, 5)
+    b = Vector(2, 3)
+    c = a + b
+    print("c = a + b -> c ", c)
 
 
-print("""
-# Data hiding
-""")
+    print("""
+    # Data hiding
+    """)
 
 
 class JustCounterClass:
@@ -176,36 +178,37 @@ class JustCounterClass:
         print("JustCounterClass.__secret_counter ", JustCounterClass.__secret_counter)
 
 
-CountDemo = JustCounterClass()
-CountDemo2 = JustCounterClass()
+if __name__ == "__main__":
+    CountDemo = JustCounterClass()
+    CountDemo2 = JustCounterClass()
 
-# print("CountDemo.__secret_counter", CountDemo.__secret_counter)   #This will giveen error
+    # print("CountDemo.__secret_counter", CountDemo.__secret_counter)   #This will giveen error
 
-print("__ just add _ClassName and renamve the varialbe. It can be accessed read . But not write to it")
-print("CountDemo.JustCounterClass__secret_counter", CountDemo._JustCounterClass__secret_counter)
+    print("__ just add _ClassName and renamve the varialbe. It can be accessed read write to it")
+    print("CountDemo.JustCounterClass__secret_counter", CountDemo._JustCounterClass__secret_counter)
 
-# JustCounterClass.JustCounterClass__secret_counter = 10 This will not work
-
-
-print("CountDemo.JustCounterClass__secret_counter = 3 ", CountDemo._JustCounterClass__secret_counter)
-
-print("In this exampel we use a static varialbe. But you can make a class member variable private too")
+    JustCounterClass._JustCounterClass__secret_counter = 10 
 
 
-""" 
-Operator            Expression	Internally
-Addition            p1 + p2	    p1.__add__(p2)
-Subtraction         p1 - p2	    p1.__sub__(p2)
-Multiplication      p1 * p2	    p1.__mul__(p2)
-Power               p1 ** p2	p1.__pow__(p2)
-Division            p1 / p2	    p1.__truediv__(p2)
-Floor Division	    p1 // p2	p1.__floordiv__(p2)
-Remainder modulo)	p1 % p2	    p1.__mod__(p2)
-Bitwise Left Shift	p1 << p2	p1.__lshift__(p2)
-Bitwise Right Shift	p1 >> p2	p1.__rshift__(p2)
-Bitwise AND	        p1 & p2	    p1.__and__(p2)
-Bitwise OR	        p1 | p2	    p1.__or__(p2)
-Bitwise XOR	        p1 ^ p2	    p1.__xor__(p2)
-Bitwise NOT	        ~p1	        p1.__invert__()
+    print("CountDemo.JustCounterClass__secret_counter = 3 ", CountDemo._JustCounterClass__secret_counter)
 
- """
+    print("In this exampel we use a static varialbe. But you can make a class member variable private too")
+
+
+    """ 
+    Operator            Expression	Internally
+    Addition            p1 + p2	    p1.__add__(p2)
+    Subtraction         p1 - p2	    p1.__sub__(p2)
+    Multiplication      p1 * p2	    p1.__mul__(p2)
+    Power               p1 ** p2	p1.__pow__(p2)
+    Division            p1 / p2	    p1.__truediv__(p2)
+    Floor Division	    p1 // p2	p1.__floordiv__(p2)
+    Remainder modulo)	p1 % p2	    p1.__mod__(p2)
+    Bitwise Left Shift	p1 << p2	p1.__lshift__(p2)
+    Bitwise Right Shift	p1 >> p2	p1.__rshift__(p2)
+    Bitwise AND	        p1 & p2	    p1.__and__(p2)
+    Bitwise OR	        p1 | p2	    p1.__or__(p2)
+    Bitwise XOR	        p1 ^ p2	    p1.__xor__(p2)
+    Bitwise NOT	        ~p1	        p1.__invert__()
+
+    """
