@@ -24,3 +24,18 @@ def dfs(graph, start):
 
 
 dfs(graph, 'A')
+
+
+#recursive depthfirst seach
+
+def dfs_recursive(graph, start):
+    print(start, " ")
+    if len(graph[start]) <= 0:
+        return
+    else:
+        for child in graph[start]:
+            dfs_recursive(graph, child)
+
+
+print("Recursive dfs")
+dfs_recursive(graph, 'A')
