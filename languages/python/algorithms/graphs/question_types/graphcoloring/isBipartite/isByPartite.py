@@ -25,3 +25,9 @@ class Solution:
                             qu.append(connected_node)
                                              
         return True
+
+
+#input graph = [[1,3],[0,2],[1,3],[0,2]] ( no need of has table since nodes are intergers and continuous)
+
+test = Solution()
+print(test.isBipartite([[1,3],[0,2],[1,3],[0,2]]))
