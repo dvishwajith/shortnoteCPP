@@ -151,6 +151,54 @@ the nodes\n
 """)
 dijkstrasPath(adjacencylist,9,0)
 
+
+def dijkstrasPathPreviousNodeMethod(adjacencylist, numberofnodes, startnode):
+    #construct the graph
+    graph = {}  # This can be multi dimension array too
+    for link in adjacencylist:
+        u = link[0]
+        v = link[1]
+        w = link[2]
+        if u not in graph: graph[u] = []
+        if v not in graph: graph[v] = []
+        graph[u].append((v, w))
+        graph[v].append((u, w))
+
+    dist = [sys.maxsize]*numberofnodes #dist array
+    previousNode = [-1]*numberofnodes
+    dist[startnode] = 0
+    visited = set()
+    pq = PriorityQueue()
+    pq.put((0, startnode)) #lowest weight
+
+    while not pq.empty():
+        weight, currentnode = pq.get()
+        if currentnode in visited:
+            continue
+        visited.add(currentnode)
+        for childnode, weight in graph[currentnode]:
+            old_dist = dist[childnode]
+            new_dist = dist[currentnode] + weight
+            if new_dist < old_dist:
+                pq.put((new_dist, childnode))
+                dist[childnode] = new_dist
+                previousNode[childnode] = currentnode
+
+    print("shortest distance to all the nodes",dist)
+    print("paths ", previousNode)
+
+print("""
+\ndijkstrasPathPreviousNodeMethod\n
+    Just store the previous node for the shotest path in an array.
+ex:- shorted path for node 8 
+previousNode[8] = 7
+previousNode[7] = 6
+previousNode[6] = 0
+previousNode[0] = -1
+If it is -1 terminate. shortest pat his 0, 6, 7, 8
+""")
+dijkstrasPathPreviousNodeMethod(adjacencylist,9,0)
+
     
 
     
