@@ -88,11 +88,9 @@ def dijkstras2nd(adjacencylist, numberofnodes, startnode):
             continue
         visited.add(currentnode)
         for childnode, weight in graph[currentnode]:
-            old_dist = dist[childnode]
-            new_dist = dist[currentnode] + weight
-            if new_dist < old_dist:
-                pq.put((new_dist, childnode))
-                dist[childnode] = new_dist
+            if dist[childnode] > dist[currentnode] + weight:
+                dist[childnode] = dist[currentnode] + weight
+                pq.put((dist[childnode], childnode))
 
     print("shortest distance to all the nodes",dist)
     print("visited ", visited)
@@ -177,11 +175,9 @@ def dijkstrasPathPreviousNodeMethod(adjacencylist, numberofnodes, startnode):
             continue
         visited.add(currentnode)
         for childnode, weight in graph[currentnode]:
-            old_dist = dist[childnode]
-            new_dist = dist[currentnode] + weight
-            if new_dist < old_dist:
-                pq.put((new_dist, childnode))
-                dist[childnode] = new_dist
+            if dist[childnode] > dist[currentnode] + weight:
+                dist[childnode] = dist[currentnode] + weight
+                pq.put((dist[childnode], childnode))
                 previousNode[childnode] = currentnode
 
     print("shortest distance to all the nodes",dist)
@@ -195,7 +191,7 @@ previousNode[8] = 7
 previousNode[7] = 6
 previousNode[6] = 0
 previousNode[0] = -1
-If it is -1 terminate. shortest pat his 0, 6, 7, 8
+If it is -1 terminate. shortest path is 0, 6, 7, 8
 """)
 dijkstrasPathPreviousNodeMethod(adjacencylist,9,0)
 
