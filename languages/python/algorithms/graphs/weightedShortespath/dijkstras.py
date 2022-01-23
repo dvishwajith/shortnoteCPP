@@ -41,16 +41,18 @@ def dijkstras(adjacencylist, numberofnodes, startnode):
         graph[(v, u)] = w
 
     dist = [sys.maxsize]*numberofnodes #dist array
-    dist[startnode] = 0
     visited = set()
     pq = PriorityQueue()
-    pq.put((0, startnode)) #lowest weight
+
+    dist[startnode] = 0
+    pq.put((0, startnode)) # (node_distance, node)
 
     while not pq.empty():
         weight, currentnode = pq.get()
         if currentnode in visited:
             continue
         visited.add(currentnode)
+
         for i in range(numberofnodes):
             if (currentnode,i) in graph:
                 old_dist = dist[i]
@@ -77,16 +79,18 @@ def dijkstras2nd(adjacencylist, numberofnodes, startnode):
         graph[v].append((u, w))
 
     dist = [sys.maxsize]*numberofnodes #dist array
-    dist[startnode] = 0
     visited = set()
     pq = PriorityQueue()
-    pq.put((0, startnode)) #lowest weight
+
+    dist[startnode] = 0
+    pq.put((0, startnode)) # (node_distance, node)
 
     while not pq.empty():
         weight, currentnode = pq.get()
         if currentnode in visited:
             continue
         visited.add(currentnode)
+
         for childnode, weight in graph[currentnode]:
             if dist[childnode] > dist[currentnode] + weight:
                 dist[childnode] = dist[currentnode] + weight
@@ -105,9 +109,9 @@ def dijkstrasPath(adjacencylist, numberofnodes, startnode):
     #construct the graph
     graph = {}  # This can be multi dimension array too
     for link in adjacencylist:
-        u = link[0]
-        v = link[1]
-        w = link[2]
+        u = link[0] # Node U
+        v = link[1] # Node V
+        w = link[2] # Weight
         if u not in graph: graph[u] = []
         if v not in graph: graph[v] = []
         graph[u].append((v, w))
@@ -115,10 +119,11 @@ def dijkstrasPath(adjacencylist, numberofnodes, startnode):
 
     dist = [sys.maxsize]*numberofnodes #dist array
     path = [[startnode]]*numberofnodes
-    dist[startnode] = 0
     visited = set()
     pq = PriorityQueue()
-    pq.put((0, startnode)) #lowest weight
+
+    dist[startnode] = 0
+    pq.put((0, startnode)) # (node_distance, node)
 
     while not pq.empty():
         weight, currentnode = pq.get()
@@ -154,9 +159,9 @@ def dijkstrasPathPreviousNodeMethod(adjacencylist, numberofnodes, startnode):
     #construct the graph
     graph = {}  # This can be multi dimension array too
     for link in adjacencylist:
-        u = link[0]
-        v = link[1]
-        w = link[2]
+        u = link[0] # Node U
+        v = link[1] # Node V
+        w = link[2] # Weight
         if u not in graph: graph[u] = []
         if v not in graph: graph[v] = []
         graph[u].append((v, w))
@@ -164,16 +169,18 @@ def dijkstrasPathPreviousNodeMethod(adjacencylist, numberofnodes, startnode):
 
     dist = [sys.maxsize]*numberofnodes #dist array
     previousNode = [-1]*numberofnodes
-    dist[startnode] = 0
     visited = set()
     pq = PriorityQueue()
-    pq.put((0, startnode)) #lowest weight
+
+    dist[startnode] = 0
+    pq.put((0, startnode)) # (node_distance, node)
 
     while not pq.empty():
         weight, currentnode = pq.get()
         if currentnode in visited:
             continue
         visited.add(currentnode)
+        
         for childnode, weight in graph[currentnode]:
             if dist[childnode] > dist[currentnode] + weight:
                 dist[childnode] = dist[currentnode] + weight
