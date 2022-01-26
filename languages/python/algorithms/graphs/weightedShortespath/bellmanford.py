@@ -62,8 +62,10 @@ def bellmanFordDistance(adjacencylist, numberofnodes, startnode):
         for edge, weight in graph.items():
             u = edge[0]
             v = edge[1]
-            if dist[v] > dist[u] + weight:
-                dist[v] = dist[u] + weight
+            # if current node distance is infinity, adding to it will cause an overflow
+            if dist[u] != sys.maxsize: 
+                if dist[v] > dist[u] + weight:
+                    dist[v] = dist[u] + weight
 
     #detecting negative weight cycles. In this case shortest path will not be correct
     for u, v, weight in adjacencylist:
@@ -88,8 +90,10 @@ def bellmanFordDistance2ndMethod(adjacencylist, numberofnodes, startnode):
     for _ in range(numberofnodes-1):
         # Relax all the edges in the graph
         for u, v, weight in adjacencylist:
-            if dist[v] > dist[u] + weight:
-                dist[v] = dist[u] + weight      
+            # if current node distance is infinity, adding to it will cause an overflow
+            if dist[u] != sys.maxsize: 
+                if dist[v] > dist[u] + weight:
+                    dist[v] = dist[u] + weight 
 
     #detecting negative weight cycles. In this case shortest path will not be correct
     for u, v, weight in adjacencylist:
@@ -113,9 +117,11 @@ def bellmanFordPath(adjacencylist, numberofnodes, startnode):
     for _ in range(numberofnodes-1):
         # Relax all the edges in the graph
         for u, v, weight in adjacencylist:
-            if dist[v] > dist[u] + weight:
-                dist[v] = dist[u] + weight
-                previousnode[v] = u       
+            # if current node distance is infinity, adding to it will cause an overflow
+            if dist[u] != sys.maxsize: 
+                if dist[v] > dist[u] + weight:
+                    dist[v] = dist[u] + weight
+                    previousnode[v] = u       
 
     #detecting negative weight cycles. In this case shortest path will not be correct
     for u, v, weight in adjacencylist:

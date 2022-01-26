@@ -92,9 +92,10 @@ def dijkstras2nd(adjacencylist, numberofnodes, startnode):
         visited.add(currentnode)
 
         for childnode, weight in graph[currentnode]:
-            if dist[childnode] > dist[currentnode] + weight:
-                dist[childnode] = dist[currentnode] + weight
-                pq.put((dist[childnode], childnode))
+            if dist[currentnode] != sys.maxsize:
+                if dist[childnode] > dist[currentnode] + weight:
+                    dist[childnode] = dist[currentnode] + weight
+                    pq.put((dist[childnode], childnode))
 
     print("shortest distance to all the nodes",dist)
     print("visited ", visited)
@@ -180,12 +181,14 @@ def dijkstrasPathPreviousNodeMethod(adjacencylist, numberofnodes, startnode):
         if currentnode in visited:
             continue
         visited.add(currentnode)
-        
+
         for childnode, weight in graph[currentnode]:
-            if dist[childnode] > dist[currentnode] + weight:
-                dist[childnode] = dist[currentnode] + weight
-                pq.put((dist[childnode], childnode))
-                previousNode[childnode] = currentnode
+            # if current node is inifinity no point of comparing
+            if dist[currentnode] != sys.maxsize:  
+                if dist[childnode] > dist[currentnode] + weight:
+                    dist[childnode] = dist[currentnode] + weight
+                    pq.put((dist[childnode], childnode))
+                    previousNode[childnode] = currentnode
 
     print("shortest distance to all the nodes",dist)
     print("paths ", previousNode)
