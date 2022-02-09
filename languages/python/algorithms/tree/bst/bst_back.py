@@ -1,42 +1,62 @@
 #!/usr/bin/env python3
 
 
-class BstNode():
-    def __init__(self, value=0) -> None:
-        self.value = value
+class TreeNode():
+    def __init__(self, val=0) -> None:
+        self.val = val
         self.right = None
         self.left = None
 
-    def insert(self, val):
-        if val < self.value:
-            if self.left:
-                self.left.insert(val)
-            else:
-                self.left = BstNode(val)
+
+def insert(root, val):
+    if root is None:
+        return TreeNode(val)
+    else:
+        if val < root.val:
+            root.left = insert(root.left, val)
         else:
-            if self.right:
-                self.right.insert(val)
-            else:
-                self.right = BstNode(val)
-
-    def traversePreOrder(self):
-        if self.left:
-            self.left.traversePreOrder()
-        
-        print(self.value, end= " ")
-
-        if self.right:
-            self.right.traversePreOrder()
+            root.right = insert(root.right, val)
+        return root
 
 
-root = BstNode(5)
-root.insert(1)
-root.insert(6)
-root.insert(3)
-root.insert(2)
-root.insert(8)
+root = insert(None, 5)
+root = insert(root, 1)
+root = insert(root, 6)
+root = insert(root, 3)
+root = insert(root, 2)
+root = insert(root, 8)
 
-root.traversePreOrder()
+
+def inOrderTraverse(root):
+    if root.left:
+        inOrderTraverse(root.left)
+    print(root.val)
+    if root.right:
+        inOrderTraverse(root.right)
+
+def preOrderTraverse(root):
+    if root.left:
+        preOrderTraverse(root.left)
+    print(root.val)
+    if root.right:
+        preOrderTraverse(root.right)
+                        
+
+def postOrderTraverse(root):
+    if root.left:
+        postOrderTraverse(root.left)
+    print(root.val)
+    if root.right:
+        postOrderTraverse(root.right)
+
+
+print("inOrderTraverse")
+inOrderTraverse(root)
+print("preOrderTraverse")
+preOrderTraverse(root)
+print("postOrderTraverse")
+postOrderTraverse(root)
+
 
 
             
