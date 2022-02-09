@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 
+from collections import deque
+
+
 class TreeNode():
     def __init__(self, val=0) -> None:
         self.val = val
@@ -49,6 +52,19 @@ def postOrderTraverse(root):
         postOrderTraverse(root.right)
     print(root.val)
 
+
+def levelOrderTraversal(root):
+    queue = deque()
+    queue.append(root)
+
+    while queue:
+        #pop a node from the fron
+        node = queue.popleft() 
+        # Adding children to the end of the queue
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
 
 print("inOrderTraverse")
 inOrderTraverse(root)
