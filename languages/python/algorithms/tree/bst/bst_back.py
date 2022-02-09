@@ -33,12 +33,12 @@ root = insert(root, 8)
 def inOrderTraverse(root):
     if root.left:
         inOrderTraverse(root.left)
-    print(root.val)
+    print(root.val, end=" ")
     if root.right:
         inOrderTraverse(root.right)
 
 def preOrderTraverse(root):
-    print(root.val)
+    print(root.val, end=" ")
     if root.left:
         preOrderTraverse(root.left)
     if root.right:
@@ -50,7 +50,7 @@ def postOrderTraverse(root):
         postOrderTraverse(root.left)
     if root.right:
         postOrderTraverse(root.right)
-    print(root.val)
+    print(root.val, end=" ")
 
 
 def levelOrderTraversal(root):
@@ -60,18 +60,22 @@ def levelOrderTraversal(root):
     while queue:
         #pop a node from the fron
         node = queue.popleft() 
+        print(node.val, end=" ")
         # Adding children to the end of the queue
         if node.left:
             queue.append(node.left)
         if node.right:
             queue.append(node.right)
 
-print("inOrderTraverse")
+print("\ninOrderTraverse ")
 inOrderTraverse(root)
-print("preOrderTraverse")
+print("\npreOrderTraverse ")
 preOrderTraverse(root)
-print("postOrderTraverse")
+print("\npostOrderTraverse ")
 postOrderTraverse(root)
+
+print("\nlevelOrderTraversal ")
+levelOrderTraversal(root)
 
 
 
