@@ -35,9 +35,9 @@ def inOrderTraverse(root):
         inOrderTraverse(root.right)
 
 def preOrderTraverse(root):
+    print(root.val)
     if root.left:
         preOrderTraverse(root.left)
-    print(root.val)
     if root.right:
         preOrderTraverse(root.right)
                         
@@ -45,9 +45,9 @@ def preOrderTraverse(root):
 def postOrderTraverse(root):
     if root.left:
         postOrderTraverse(root.left)
-    print(root.val)
     if root.right:
         postOrderTraverse(root.right)
+    print(root.val)
 
 
 print("inOrderTraverse")
