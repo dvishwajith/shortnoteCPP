@@ -40,7 +40,8 @@ obj = A()
 d[obj] = 'abc'  
 print("d[obj] = ", d[obj])
 obj2 = A()
-# print(d[elem2])    # KeyError  because elem2 is not elem. 
+d[obj2] = "cdf"
+print("d[obj2] = ", d[obj2])    # KeyError  because elem2 is not elem. 
 # The  __hash__() gives different outputs. if you want this to be valid override the __hash__() function
 # to get the has using input string data
 

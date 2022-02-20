@@ -1,5 +1,8 @@
 #include<iostream>
 #include <memory>
+
+#define DEBUG_LINE __FUNCTION__ << ":" << __LINE__
+
 using namespace std;
 
 class B 
@@ -7,12 +10,12 @@ class B
     public:
     void B_print()
     {
-        cout << "printing inside " << __FUNCTION__ << " line " << __LINE__ << endl;
+        cout << "printing inside " << DEBUG_LINE << endl;
     }
 
     virtual void print()
     {
-        cout << "printing inside " << __FUNCTION__ << " line " << __LINE__ << endl;
+        cout << "printing inside " << DEBUG_LINE << endl;
     }
 };
 
@@ -21,12 +24,12 @@ class D: public B
     public:
     void D_print()
     {
-        cout << "printing inside " << __FUNCTION__ << " line " << __LINE__ << endl;
+        cout << "printing inside " << DEBUG_LINE << endl;
     }
 
     virtual void print()
     {
-        cout << "printing inside " << __FUNCTION__ << " line " << __LINE__ << endl;
+        cout << "printing inside " << DEBUG_LINE << endl;
     }
 };
 
@@ -40,7 +43,7 @@ void DownCasting(B* pb)
     }
     else
     {
-        cout << "wrong cast in " << __FUNCTION__ << ":" << __LINE__ << endl;
+        cout << "wrong cast in " << DEBUG_LINE << endl;
     }
     
 
@@ -71,7 +74,7 @@ void UpCasting(B* pd)
     }
     else
     {
-        cout << "wrong cast in " << __FUNCTION__ << ":" << __LINE__ << endl;
+        cout << "wrong cast in " << DEBUG_LINE << endl;
     }
 
 }
