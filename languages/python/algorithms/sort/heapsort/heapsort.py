@@ -7,26 +7,32 @@ Heapify
 parent swap that with the parent.
 2. Continue heapify with the swapped child
 """
+
 def heapify(arr, length, i):
-    if (length > 2*i + 2) and (arr[2*i + 2] > arr[2*i + 1]):
-        if arr[2*i + 2] > arr[i]:
-            arr[2*i + 2], arr[i] = arr[i], arr[2*i + 2]
-            heapify(arr, length, 2*i+2)
-    else:
-        if (length > 2*i+1) and (arr[2*i + 1] > arr[i]):
-            arr[2*i + 1], arr[i] = arr[i], arr[2*i + 1]
-            heapify(arr, length, 2*i+1)
+    l_child_index = 2*i+1
+    r_child_index = 2*i+2
+    large_index = i
+    if length > l_child_index and arr[l_child_index] > arr[large_index]:
+        large_index = l_child_index
+    if length > r_child_index and arr[r_child_index] > arr[large_index]:
+        large_index = r_child_index
+    if large_index != i:    
+        arr[i], arr[large_index] = arr[large_index], arr[i]
+        heapify(arr, length, large_index)
 
 """
-maxHeap
+buildMaxHeap
 1. get the lowest non leaf parent indexes
 2. start heapfying from lowest_parent to root.
 """
-def maxHeap(arr):
-    arr_len = len(arr)
-    lowest_parent = (arr_len)//2
-    for i in range(lowest_parent, -1, -1):
-        heapify(arr, arr_len,i)
+def buildMaxHeap(arr):
+    length = len(arr)
+    lowest_parent = length//2
+
+    for i in range(lowest_parent,-1,-1):
+        heapify(arr, length, i)
+
+
 
 """
 HeapSort
@@ -38,7 +44,7 @@ HeapSort
 """
 def heapsort(arr):
     arr_len = len(arr)
-    maxHeap(arr)
+    buildMaxHeap(arr)
 
     for i in range(arr_len -1, 0, -1):
         arr[0], arr[i] = arr[i], arr[0]

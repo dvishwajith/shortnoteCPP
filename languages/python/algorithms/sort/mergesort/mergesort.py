@@ -43,6 +43,48 @@ def merge(A, start, mid, end):
         right += 1
         i += 1
 
+# seonc method
+
+def mergsortwrapper2(A):
+    mergeSort2(A, 0, len(A))
+
+def mergeSort2(A, start, end):
+    if start == end-1:
+        return
+    mid = (end + start)//2
+    mergeSort2(A, start, mid)
+    mergeSort2(A, mid, end)
+    merge2(A, start, mid, end)
+
+def merge2(A, start, mid, end):
+    l = A[start:mid]
+    l_index = 0
+    r = A[mid:end]
+    r_index = 0
+    i = start
+
+    while(l_index < (mid-start) and r_index < (end -mid)):
+        if l[l_index] < r[r_index]:
+            A[i] = l[l_index]
+            l_index += 1
+        else:
+            A[i] = r[r_index]
+            r_index += 1
+        i += 1
+    
+    while(l_index < (mid-start)):
+        A[i] = l[l_index]
+        l_index += 1
+        i += 1
+
+    while(r_index < (end - mid)):
+        A[i] = r[r_index]
+        r_index += 1
+        i += 1
+
+
+
+
 test = [2,3,6,9,4,9,1]
 mergsortwrapper(test)
 print(test)
@@ -52,3 +94,8 @@ An this is an O(n^2) operation. And you can use shell sorting too.
 But note that inplace merge is Hard and resaeach problem.
 If someone need to do an inplace sorting use QuickSort insted of merge sort)
 """
+
+
+test = [2,3,6,9,4,9,1]
+mergsortwrapper2(test)
+print(test)

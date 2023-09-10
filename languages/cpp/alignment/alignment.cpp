@@ -92,5 +92,12 @@ int main()
     return 0;
 }
 
-
+/*
+sizeof(unsigned long) 8
+sizeof(x_) 12
+sizeof(x_1) 8
+sizeof(y_) 16
+sizeof(y_16_exemple_2) 16
+sizeof(y_16_exemple_3) 32
+*/
 
